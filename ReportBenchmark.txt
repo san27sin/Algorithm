@@ -1,0 +1,13 @@
+﻿BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22000.795/21H2)
+AMD Ryzen 5 5500U with Radeon Graphics, 1 CPU, 12 logical and 6 physical cores
+.NET SDK=5.0.407
+  [Host]     : .NET 5.0.16 (5.0.1622.16705), X64 RyuJIT AVX2  [AttachedDebugger]
+  DefaultJob : .NET 5.0.16 (5.0.1622.16705), X64 RyuJIT AVX2
+
+
+|                                                               Method |     Mean |   Error |  StdDev | Rank | Allocated |
+|--------------------------------------------------------------------- |---------:|--------:|--------:|-----:|----------:|
+|                              'Дистанция между точками, класс, float' | 238.7 ns | 1.91 ns | 1.69 ns |    3 |         - |
+|                          'Дистанция между точками, структура, float' | 237.7 ns | 1.15 ns | 1.08 ns |    3 |         - |
+|                             'Дистанция между точками, класс, double' | 107.4 ns | 0.28 ns | 0.23 ns |    1 |         - |
+| 'Дистанция между точками, структура, float, без вычисления квадрата' | 225.5 ns | 0.91 ns | 0.86 ns |    2 |         - |

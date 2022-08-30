@@ -1,12 +1,14 @@
 ﻿using System;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
 
 namespace Algorithm
 {
-    class Program
+    public sealed class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+            BenchmarkRunner.Run<BenchmarkTest>();                     
+        }         
     }
 }
