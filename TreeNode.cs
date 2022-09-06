@@ -8,7 +8,7 @@ namespace Algorithm
 {
     public class TreeNode : ITree
     {
-        public int Value { get; set; }
+        public int Value { get; private set; }
         public TreeNode LeftChild { get; set; }
         public TreeNode RightChild { get; set; }
         public TreeNode Parent { get; set; }
@@ -214,6 +214,64 @@ namespace Algorithm
                 return FindNode(this.LeftChild, value);
             else
                 return FindNode(this.RightChild, value);
+        }
+
+
+        public TreeNode BFS(int value)
+        {
+            var bfs = new Queue<TreeNode>();
+            bfs.Enqueue(this);
+
+            while (bfs.Any())
+            {
+                TreeNode nodeTree = bfs.Dequeue();
+                Console.Write($"{nodeTree.Value} -> ");
+                if (value == nodeTree.Value)
+                {
+                    WorkWithConsole();
+                    return nodeTree;
+                }
+                    
+                if (nodeTree.LeftChild != null)
+                    bfs.Enqueue(nodeTree.LeftChild);
+                if (nodeTree.RightChild != null)
+                    bfs.Enqueue(nodeTree.RightChild);
+            }
+            WorkWithConsole();
+            return null;
+        }
+
+        public TreeNode DFS(int value)
+        {
+            var dfs = new Stack<TreeNode>();
+            dfs.Push(this);
+
+            while(dfs.Any())
+            {
+                TreeNode nodeTree = dfs.Pop();
+                Console.Write($"{nodeTree.Value} -> ");
+                if (value == nodeTree.Value)
+                {
+                    WorkWithConsole();
+                    return nodeTree;
+                }
+
+                if (nodeTree.RightChild != null)
+                    dfs.Push(nodeTree.RightChild);
+                if (nodeTree.LeftChild != null)
+                    dfs.Push(nodeTree.LeftChild);
+            }
+
+            WorkWithConsole();
+            return null;
+        }
+
+
+        private void WorkWithConsole()
+        {
+            Console.SetCursorPosition(Console.CursorLeft - 3, Console.CursorTop);
+            Console.Write("   ");
+            Console.WriteLine();
         }
     }
 
